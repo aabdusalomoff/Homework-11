@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="uz">
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Movie Detail</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="brand">
+                <div class="logo">OM</div>
+                <div>
+                    <h2 style="margin:0">{{ movie.title }}</h2>
+                    <div style="color:var(--muted);font-size:13px">{{ movie.created_at }}</div>
+                </div>
+            </div>
+            <div class="nav"><a href="{% url 'movie_list' %}" class="small-btn">Ro'yxat</a></div>
+        </div>
+
+
+        <div class="detail-wrap">
+            <img class="poster-large" src="{{ movie.image.url }}" alt="Poster">
+
+
+            <div>
+                <h3>Tavsif</h3>
+                <p style="color:var(--muted)">Bu yerda filmning to'liq tavsifi bo'ladi. {{ movie.created_at }} {{
+                    movie.rejissor }},
+                    a va boshqa meta ma'lumotlar shu yerda joylashadi.</p>
+
+
+                <div class="attr"><strong>Rejissyor:</strong> {{ movie.rejissor }}</div>
+                <div class="attr"><strong>Muddat:</strong> 123</div>
+
+
+                <div style="margin-top:18px">
+                    <a href="{% url 'movie_update' movie.id %}" class="small-btn">Edit</a>
+                    <a href="{% url 'movie_delete' movie.id %}" class="small-btn">Delete</a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+
+</html>

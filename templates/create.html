@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="uz">
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Online Movies — Yangi film</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="brand">
+                <div class="logo">OM</div>
+                <div>
+                    <h2 style="margin:0">Yangi film qo'shish</h2>
+                </div>
+            </div>
+            <div class="nav"><a href="{% url 'movie_list' %}" class="small-btn">Orqaga</a></div>
+        </div>
+
+
+        <div class="form-card">
+            <form action="{% url 'movie_create' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="field">
+                        <label for="title">Sarlavha</label>
+                        <input id="title" name="title" type="text" required>
+                    </div>
+                    <div class="field">
+                        <label for="year">Yil</label>
+                        <input id="year" name="year" type="number" min="1888" max="2100">
+                    </div>
+                </div>
+
+
+                <div class="field">
+                    <label for="genre">Janr</label>
+                    <input id="genre" name="genre" type="text">
+                </div>
+
+
+                <div class="field">
+                    <label for="desc">Tavsif</label>
+                    <textarea id="desc" name="description"></textarea>
+                </div>
+
+
+                <div class="field">
+                    <label for="poster">Poster (rasm)</label>
+                    <input id="poster" name="poster" type="file" accept="image/*">
+                </div>
+
+
+                <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:12px">
+                    <a href="{% url 'movie_list' %}" class="small-btn">Bekor qilish</a>
+                    <button class="button" type="submit">Saqlash</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+

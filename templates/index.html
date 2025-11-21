@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="uz">
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Online Movies — Ro'yxat</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="brand">
+                <div class="logo">OM</div>
+                <div>
+                    <h2 style="margin:0">Online Movies</h2>
+                    <div style="color:var(--muted);font-size:13px">Sizning sevimli filmlaringiz</div>
+                </div>
+            </div>
+            <div class="nav">
+                <a class="button" href="{% url 'movie_create' %}">+ Movie qo'shish</a>
+            </div>
+        </div>
+
+
+        <div class="grid">
+            <!-- Bitta film kartasi namunasi; backend bilan dinamik tarzda takrorlanadi -->
+            {% for movie in movies %}
+            <div class="card">
+                <img class="poster" src="{{ movie.image.url }}" alt="Poster">
+                <h3>{{ movie.title }}</h3>
+                <div class="meta">{{ movie.created_at|date:"d-m-Y" }}</div>
+                <p style="color:var(--muted);font-size:14px">{{ movie.desc|truncatewords:20 }}</p>
+                <div class="actions">
+                    <a class="small-btn" href="{% url 'movie_detail' movie.id %}">View</a>
+                    <a class="small-btn" href="{% url 'movie_update' movie.id %}">Edit</a>
+                    <a class="small-btn" href="{% url 'movie_delete' movie.id %}">Delete</a>
+                </div>
+            </div>
+            {% endfor %}
+
+
+            <!-- Qo'shimcha kartalar... -->
+
+
+        </div>
+
+
+        <div class="footer">© Online Movies — barcha huquqlar himoyalangan</div>
+    </div>
+</body>
+
+</html>
