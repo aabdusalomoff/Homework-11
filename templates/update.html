@@ -18,7 +18,6 @@
                     <h2 style="margin:0">Filmni tahrirlash</h2>
                 </div>
             </div>
-            <div class="nav"><a href="{% url 'movie_detail' movie.id %}" class="small-btn">Orqaga</a></div>
         </div>
 
 
@@ -52,7 +51,7 @@
                 </div>
 
                 <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:12px">
-                    <a href="{% url 'movie_detail' movie.id %}" class="small-btn">Bekor qilish</a>
+                    <a href="{% url 'movie_list' %}" class="small-btn">Bekor qilish</a>
                     <button class="button" type="submit">O'zgartirishni saqlash</button>
                 </div>
             </form>
